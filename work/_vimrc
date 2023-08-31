@@ -1,0 +1,103 @@
+set belloff=all
+set number
+set relativenumber
+" Indentación
+filetype indent on
+set autoindent
+ 
+" La indentación tendrá un ancho de 4 espacios
+set shiftwidth=4
+" Siempre usa el caracter TAB que se establece a 4 espacios de ancho
+set tabstop=4
+"set noexpandtab
+" Siempre usa el caracter espacio en lugar de TAB
+set softtabstop=4
+set expandtab
+
+" Archivos .yml
+autocmd FileType yaml setlocal sw=2 ts=2 sts=2
+autocmd FileType html setlocal sw=2 ts=2 sts=2
+
+" Activamos el resaltado de sintaxis
+syntax on
+
+" Desactivamos la opción de vim de guardar archivo de backup con el mismo nombre que el original finalizado en '~' 
+set nobackup
+set nowritebackup
+
+" Desactivamos la opción de vim de crear un undo file cuando guardamos el original
+set noundofile
+
+" Establecemos la codificación del archivo
+set fileencodings=utf-8,cp1252
+set encoding=utf-8
+
+" backspace siempre funciona en modo insertar
+set backspace=indent,eol,start
+
+" Para compartir el clipboard con el sistema operativo
+set clipboard=unnamed
+
+" Establecemos el tipo de fuente
+if has('gui_running')
+"	set guifont=Consolas:h11:cANSI:qDRAFT
+"	set guifont=Hack_NFM:h10:cANSI:qDRAFT
+	set guifont=MesloLGM_NFM:h09:cANSI:qDRAFT
+endif
+
+set colorcolumn=80
+" Resalta la línea donde se encuentra el cursor
+set cursorline
+" Número de columnas y líneas que se muestran al arrancar vim (por defecto co=80, lines=25
+"set co=120
+"set lines=50
+" To maximize the initial Vim window under Windows
+au GUIEnter * simalt ~x
+
+" Nuevo menú vertical en Vim 9.0 :e <tab>
+set wildmenu wildoptions=pum
+
+" Para que carge los plugins, ya que estos están en otro directorio no contemplado en packpath
+" runtimepath = rtp (abreviada)
+"set runtimepath+=~/.vim
+"set packpath+=~/.vim
+
+" Plugin gruvbox 'git clone https://github.com/morhetz/gruvbox.git ./vimfiles/pack/vendor/start/gruvbox'
+"colorscheme gruvbox
+"set background=dark	" Setting dark mode
+colorscheme onedark
+
+
+" Plugin lightline 'git clone https://github.com/itchyny/lightline.vim ./vimfiles/pack/vendor/start/lightline
+" Status bar 
+set laststatus=2
+" Display options
+set noshowmode
+set showcmd
+
+"let g:lightline = { 'colorscheme': 'onedark' }
+"let g:lightline.component_function = { 'filename': 'LightlineFilename' }
+let g:lightline = { 'colorscheme': 'onedark', 'component_function': { 'filename': 'LightlineFilename' }}
+
+function! LightlineFilename()
+    return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() : &filetype ==# 'unite' ? unite#get_status_string() : &filetype ==# 'vimshell' ? vimshell#get_status_string() : expand('%:p') !=# '' ? expand('%:p') : '[No Name]'
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
+
+" Set status line display
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+
+" Plugin nerdtree 'git clone https://github.com/preservim/nerdtree.git ./vimfiles/pack/vendor/start/nerdtree'
+let NERDTreeShowHidden=1
+"nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Plugin emmet (completar html como el plugin de VSCode) 'git clone https://github.com/mattn/emmet-vim ./vimfiles/pack/vender/start/emmet'
+" Ejemplo: escribes html:5 y tecleas <C-y>, y construye el esqueleto de un documento html 5
+" Ejemplo: div.container>ul.menu>li.menu-item*4 construye un div con clase container con un ul con clase menu con 4 li con clase menu-item
+

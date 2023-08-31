@@ -1,0 +1,12 @@
+[user]
+	name = YOUR_NAME
+	email = YOUR_EMAIL
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+[bash]
+	showDirtyState = true
+	showUntrackedFiles = true
+	showUpstream = verbose
