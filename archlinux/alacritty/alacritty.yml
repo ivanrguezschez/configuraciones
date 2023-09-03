@@ -1,0 +1,39 @@
+import:
+ - ~/.config/alacritty/themes/gruvbox_dark.yaml
+
+#font:
+#  normal:
+#    family: monospace
+#    style: Regular
+
+#  bold:
+#    family: monospace
+#    style: Bold
+
+#  italic:
+#    family: monospace
+#    style: Italic
+
+#  bold_italic:
+#    family: monospace
+#    style: Bold Italic
+
+#  size: 14
+font:
+  normal:
+    family: MesloLGM Nerd Font Mono
+    style: Regular
+
+  bold:
+    family: MesloLGM Nerd Font Mono
+    style: Bold
+
+  italic:
+    family: MesloLGM Nerd Font Mono
+    style: Italic
+
+  bold_italic:
+    family: MesloLGM Nerd Font Mono
+    style: Bold Italic
+
+  size: 14
